@@ -31,7 +31,7 @@ jobs:
           --type exe
           --name AplikasiGajiKaryawanPTSintory
           --input dist
-          --main-jar AplikasiGaji.jar
+          --main-jar AplikasGajiKaryawanPTSintory.jar
           --main-class aplikasgajikaryawanptsintory.AplikasGajiKaryawanPTSintory
           --dest output
           --win-shortcut
