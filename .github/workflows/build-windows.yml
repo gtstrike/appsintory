@@ -1,0 +1,45 @@
+name: Build Windows Installer
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Build JAR
+        shell: cmd
+        run: ant clean jar
+
+      - name: Create Windows Installer
+        shell: cmd
+        run: >
+          jpackage
+          --type exe
+          --name AplikasiGaji
+          --input dist
+          --main-jar AplikasiGaji.jar
+          --main-class appsintory.Main
+          --dest output
+          --win-shortcut
+          --win-menu
+          --win-menu-group "Aplikasi Gaji"
+
+      - name: Upload EXE
+        uses: actions/upload-artifact@v4
+        with:
+          name: AplikasiGaji-Windows
+          path: output/*.exe
