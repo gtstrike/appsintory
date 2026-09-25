@@ -29,10 +29,10 @@ jobs:
         run: >
           jpackage
           --type exe
-          --name AplikasiGaji
+          --name AplikasiGajiKaryawanPTSintory
           --input dist
           --main-jar AplikasiGaji.jar
-          --main-class appsintory.Main
+          --main-class aplikasgajikaryawanptsintory.AplikasGajiKaryawanPTSintory
           --dest output
           --win-shortcut
           --win-menu
